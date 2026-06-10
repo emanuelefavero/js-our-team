@@ -38,8 +38,12 @@ const teamMembers = [
   },
 ];
 
+// STATE
+let currentTeamMembers = [...teamMembers];
+
 // ELEMENTS
 const cardList = document.querySelector('.card-list');
+const form = document.getElementById('new-member-form');
 
 // TEMPLATES
 const getCardTemplate = ({ name, role, email, img }) => {
@@ -70,6 +74,38 @@ const renderCardList = (members) => {
   cardList.innerHTML = getCardListTemplate(members);
 };
 
-document.addEventListener('DOMContentLoaded', () =>
-  renderCardList(teamMembers),
-);
+// HANDLERS
+const handleSubmit = (event) => {
+  event.preventDefault();
+
+  // Get form data
+  const formData = new FormData(event.target);
+  const inputData = {
+    name: formData.get('name').trim(),
+    role: formData.get('role').trim(),
+    email: formData.get('email').trim(),
+  };
+
+  // Validate
+  if (!inputData.name || !inputData.role || !inputData.email) {
+    alert('Please fill in all fields');
+    return;
+  }
+
+  // Create new team member
+  const newTeamMember = {
+    ...inputData,
+    img: 'assets/img/new-user.png',
+  };
+
+  // Update state and re-render
+  currentTeamMembers = [newTeamMember, ...currentTeamMembers];
+  renderCardList(currentTeamMembers);
+
+  form.reset();
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderCardList(currentTeamMembers);
+  form.addEventListener('submit', handleSubmit);
+});

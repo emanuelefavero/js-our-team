@@ -25,6 +25,7 @@
   </head>
   <body>
     <main>
+      <!-- TITLE/DESCRIPTION -->
       <h1 class="title">Meet our Team</h1>
       <p class="description">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut aut odit,
@@ -33,56 +34,43 @@
         provident.
       </p>
 
-      <ul class="card-list">
-        <li class="card">
-          <img src="assets/img/male1.png" alt="Card 1" />
-          <div class="content">
-            <h2>Marco Bianchi</h2>
-            <p>Designer</p>
-            <a href="mailto:marcobianchi@team.com">marcobianchi@team.com</a>
-          </div>
-        </li>
-        <li class="card">
-          <img src="assets/img/male1.png" alt="Card 1" />
-          <div class="content">
-            <h2>Marco Bianchi</h2>
-            <p>Designer</p>
-            <a href="mailto:marcobianchi@team.com">marcobianchi@team.com</a>
-          </div>
-        </li>
-        <li class="card">
-          <img src="assets/img/male1.png" alt="Card 1" />
-          <div class="content">
-            <h2>Marco Bianchi</h2>
-            <p>Designer</p>
-            <a href="mailto:marcobianchi@team.com">marcobianchi@team.com</a>
-          </div>
-        </li>
-        <li class="card">
-          <img src="assets/img/male1.png" alt="Card 1" />
-          <div class="content">
-            <h2>Marco Bianchi</h2>
-            <p>Designer</p>
-            <a href="mailto:marcobianchi@team.com">marcobianchi@team.com</a>
-          </div>
-        </li>
-        <li class="card">
-          <img src="assets/img/male1.png" alt="Card 1" />
-          <div class="content">
-            <h2>Marco Bianchi</h2>
-            <p>Designer</p>
-            <a href="mailto:marcobianchi@team.com">marcobianchi@team.com</a>
-          </div>
-        </li>
-        <li class="card">
-          <img src="assets/img/male1.png" alt="Card 1" />
-          <div class="content">
-            <h2>Marco Bianchi</h2>
-            <p>Designer</p>
-            <a href="mailto:marcobianchi@team.com">marcobianchi@team.com</a>
-          </div>
-        </li>
-      </ul>
+      <!-- NEW MEMBER FORM -->
+      <form class="new-member-form" id="new-member-form">
+        <div class="input-container">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Name"
+            required
+          />
+        </div>
+        <div class="input-container">
+          <label for="role">Role</label>
+          <input
+            type="text"
+            name="role"
+            id="role"
+            placeholder="Role"
+            required
+          />
+        </div>
+        <div class="input-container">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email"
+            required
+          />
+        </div>
+        <button type="submit">Add team member</button>
+      </form>
+
+      <!-- CARD LIST -->
+      <ul class="card-list"></ul>
     </main>
   </body>
 </html>
