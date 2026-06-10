@@ -3,7 +3,7 @@
   --background: white;
   --foreground: black;
   --primary: #e53170;
-  --link: rgb(103, 189, 206);
+  --link: rgb(97, 192, 236);
 }
 
 /* BASE */
@@ -15,7 +15,7 @@
 
 body {
   font-family: 'Nunito', sans-serif;
-  min-width: 400px;
+  min-width: 420px;
   min-height: 100vh;
   padding: 1rem;
   background-color: var(--background);
@@ -99,29 +99,21 @@ main {
 }
 
 .card-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
   padding-block: 1rem;
-
-  @media (min-width: 840px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (min-width: 1200px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 
 .card {
   background-color: var(--foreground);
   color: var(--background);
+  flex: 1;
   display: flex;
 
   img {
-    /* max-width: 120px; */
-    width: 120px;
-    height: 120px;
+    width: 128px;
+    height: 128px;
     object-fit: cover;
     flex-shrink: 0;
   }
