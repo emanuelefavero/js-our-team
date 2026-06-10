@@ -41,6 +41,11 @@ select {
   font: inherit;
 }
 
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(97, 192, 236, 0.45);
+}
+
 img,
 picture,
 video,
@@ -148,6 +153,63 @@ main {
   }
 }
 
+.new-member-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #dddddd;
+  background-color: #f8f8f8;
+
+  .form-fields {
+    flex: 1 1 680px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    min-width: 0;
+
+    .form-field {
+      flex: 1 1 180px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.35rem;
+
+      label {
+        font-size: 0.9rem;
+        font-weight: 800;
+      }
+
+      input {
+        width: 100%;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        padding: 0.7rem 0.8rem;
+        background-color: var(--background);
+      }
+    }
+  }
+
+  button {
+    flex: 0 0 auto;
+    min-width: 180px;
+    border-radius: 4px;
+    padding: 0.7rem 1rem;
+    background-color: var(--foreground);
+    color: var(--background);
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  button:hover {
+    background-color: var(--primary);
+  }
+}
+
 /* DEBUG */
 .debug {
   main {
@@ -160,5 +222,9 @@ main {
 
   .card {
     border: 1px solid green;
+  }
+
+  .new-member-form {
+    border: 1px solid magenta;
   }
 }
