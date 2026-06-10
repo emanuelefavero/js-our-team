@@ -39,6 +39,7 @@ const teamMembers = [
 ];
 
 const FALLBACK_IMAGE = 'assets/img/new-user.png';
+const MAX_IMAGE_SIZE = 5 * 1024 * 1024; // 5MB
 
 // STATE
 let currentTeamMembers = [...teamMembers];
@@ -71,7 +72,25 @@ const getCardListTemplate = (members) => {
   return template;
 };
 
-// RENDERING
+// UTILS
+const getFormValues = (form) => {
+  const formData = new FormData(form);
+
+  return {
+    name: formData.get('name').trim(),
+    role: formData.get('role').trim(),
+    email: formData.get('email').trim(),
+    imageFile: formData.get('img'),
+  };
+};
+
+const getImageUrl = (imageFile) => {
+  if (imageFile.size === 0) return FALLBACK_IMAGE;
+
+  return URL.createObjectURL(imageFile);
+};
+
+// RENDERING UTILS
 const renderCardList = (members) => {
   cardList.innerHTML = getCardListTemplate(members);
 };
@@ -81,27 +100,33 @@ const handleSubmit = (event) => {
   event.preventDefault();
 
   // Get form data
-  const formData = new FormData(event.target);
-  const imageFile = formData.get('img');
+  const { name, role, email, imageFile } = getFormValues(event.currentTarget);
 
-  const newTeamMember = {
-    name: formData.get('name').trim(),
-    role: formData.get('role').trim(),
-    email: formData.get('email').trim(),
-    img: imageFile.size > 0 ? URL.createObjectURL(imageFile) : FALLBACK_IMAGE,
-  };
-
-  // Validation
-  if (!newTeamMember.name || !newTeamMember.role || !newTeamMember.email) {
+  // Validate
+  if (!name || !role || !email) {
     alert('Please fill in all fields');
     return;
   }
 
-  // Update state and re-render
+  if (imageFile.size > MAX_IMAGE_SIZE) {
+    alert('Image must be smaller than 5MB');
+    return;
+  }
+
+  // Update state
+  const newTeamMember = {
+    name,
+    role,
+    email,
+    img: getImageUrl(imageFile),
+  };
+
   currentTeamMembers = [newTeamMember, ...currentTeamMembers];
+
+  // Update UI
   renderCardList(currentTeamMembers);
 
-  form.reset();
+  event.currentTarget.reset(); // Clear form
 };
 
 document.addEventListener('DOMContentLoaded', () => {
