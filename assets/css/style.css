@@ -1,9 +1,16 @@
 /* TOKENS */
 :root {
-  --background: white;
-  --foreground: black;
-  --primary: #e53170;
-  --link: rgb(97, 192, 236);
+  --background: rgb(255 255 255);
+  --foreground: rgb(0 0 0);
+  --card: rgb(0 0 0);
+  --card-foreground: rgb(255 255 255);
+  --primary: rgb(229 49 112);
+  --primary-foreground: rgb(255 255 255);
+  --muted: rgb(248 248 248);
+  --border: rgb(221 221 221);
+  --input: rgb(204 204 204);
+  --ring: rgb(229 49 112 / 0.45);
+  --link: rgb(97 192 236);
 }
 
 /* BASE */
@@ -14,7 +21,7 @@
 }
 
 body {
-  font-family: 'Nunito', sans-serif;
+  font-family: Nunito, sans-serif;
   min-width: 420px;
   min-height: 100vh;
   padding: 1rem;
@@ -43,7 +50,7 @@ select {
 
 :where(a, button, input, textarea, select):focus-visible {
   outline: 0;
-  box-shadow: 0 0 0 3px rgba(97, 192, 236, 0.45);
+  box-shadow: 0 0 0 3px var(--ring);
 }
 
 img,
@@ -111,8 +118,8 @@ main {
 }
 
 .card {
-  background-color: var(--foreground);
-  color: var(--background);
+  background-color: var(--card);
+  color: var(--card-foreground);
   flex: 1;
   display: flex;
 
@@ -160,8 +167,8 @@ main {
   justify-content: flex-end;
   gap: 1rem;
   padding: 1rem;
-  border: 1px solid #dddddd;
-  background-color: #f8f8f8;
+  border: 1px solid var(--border);
+  background-color: var(--muted);
 
   .form-fields {
     flex: 1 1 680px;
@@ -184,7 +191,7 @@ main {
 
       input {
         width: 100%;
-        border: 1px solid #cccccc;
+        border: 1px solid var(--input);
         border-radius: 4px;
         padding: 0.7rem 0.8rem;
         background-color: var(--background);
@@ -198,7 +205,7 @@ main {
     border-radius: 4px;
     padding: 0.7rem 1rem;
     background-color: var(--foreground);
-    color: var(--background);
+    color: var(--primary-foreground);
     font-weight: 800;
     text-align: center;
     text-transform: uppercase;
@@ -207,24 +214,5 @@ main {
 
   button:hover {
     background-color: var(--primary);
-  }
-}
-
-/* DEBUG */
-.debug {
-  main {
-    border: 1px solid red;
-  }
-
-  .card-list {
-    border: 1px solid blue;
-  }
-
-  .card {
-    border: 1px solid green;
-  }
-
-  .new-member-form {
-    border: 1px solid magenta;
   }
 }
