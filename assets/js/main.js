@@ -38,6 +38,8 @@ const teamMembers = [
   },
 ];
 
+const FALLBACK_IMAGE = 'assets/img/new-user.png';
+
 // STATE
 let currentTeamMembers = [...teamMembers];
 
@@ -80,23 +82,20 @@ const handleSubmit = (event) => {
 
   // Get form data
   const formData = new FormData(event.target);
-  const inputData = {
+  const imageFile = formData.get('img');
+
+  const newTeamMember = {
     name: formData.get('name').trim(),
     role: formData.get('role').trim(),
     email: formData.get('email').trim(),
+    img: imageFile.size > 0 ? URL.createObjectURL(imageFile) : FALLBACK_IMAGE,
   };
 
-  // Validate
-  if (!inputData.name || !inputData.role || !inputData.email) {
+  // Validation
+  if (!newTeamMember.name || !newTeamMember.role || !newTeamMember.email) {
     alert('Please fill in all fields');
     return;
   }
-
-  // Create new team member
-  const newTeamMember = {
-    ...inputData,
-    img: 'assets/img/new-user.png',
-  };
 
   // Update state and re-render
   currentTeamMembers = [newTeamMember, ...currentTeamMembers];
