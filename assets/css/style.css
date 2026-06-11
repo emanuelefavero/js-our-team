@@ -195,6 +195,11 @@ main {
         border-radius: 4px;
         padding: 0.7rem 0.8rem;
         background-color: var(--background);
+
+        /* Fix file input being taller than others */
+        &[type='file'] {
+          padding-block: 0.6rem;
+        }
       }
     }
   }
@@ -203,7 +208,7 @@ main {
     flex: 0 0 auto;
     min-width: 180px;
     border-radius: 4px;
-    padding: 0.7rem 1rem;
+    padding: 0.85rem 1rem;
     background-color: var(--foreground);
     color: var(--primary-foreground);
     font-weight: 800;
